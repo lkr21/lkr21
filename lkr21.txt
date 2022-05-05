@@ -1,0 +1,75 @@
+camel problem
+
+bn_total=int(input("total no of bananas:"))
+distance = int(input("Enter the total distance to be covered:"))
+camel_capacity = int(input("Capacity of camel:"))
+lose=0
+start=bn_total
+for i in range (distance):
+    while start>0:
+        start=start-camel_capacity
+        if start==1:
+            lose=lose-1
+        lose=lose+2
+    lose=lose-1
+    start=bn_total-lose
+    if start==0:
+        break
+print(start)
+
+
+Max ticket
+
+queue=int(input())
+vacancies=[]
+s=0
+
+for i in range(queue):
+    a=int(input())
+    vacancies.append(a)
+for i in range(queue):
+    ind=vacancies.index(max(vacancies))
+    s=s+max(vacancies)
+    vacancies[ind]=max(vacancies)-1
+print(s)
+
+BFS
+
+graph = {
+    'A':['B','C'],
+    'B':['P','Q'],
+    'C':['M'],
+    'Q':['M'],
+    'M':[],
+    'P':[],
+    'Q':[]
+}
+visited_bfs = []
+queue = []
+def bfs(visited_bfs, graph, node):
+    visited_bfs.append(node)
+    queue.append(node)
+    while queue:
+        s = queue.pop(0)
+        print (s,end = " ")
+        for neighbour in graph[s]:
+            if neighbour not in visited_bfs:
+                visited_bfs.append(neighbour)
+                queue.append(neighbour)
+                
+bfs(visited_bfs,graph,'A')
+
+DFS
+
+visited=set()
+
+def dfs(visited,graph,node):
+    if node not in visited:
+        print(node,end=" ")
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited,graph,neighbour)
+    
+
+
+
